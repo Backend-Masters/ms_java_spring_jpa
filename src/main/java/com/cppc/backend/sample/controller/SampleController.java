@@ -21,6 +21,7 @@ public class SampleController {
     @RequestMapping("/getInfo")
     public List<Sample> sample(){
         List<Sample> list = (List)service.getInfoService();
+        System.out.println(list);
         return list;
     }
 
