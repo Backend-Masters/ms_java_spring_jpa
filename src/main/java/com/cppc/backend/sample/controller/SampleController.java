@@ -30,5 +30,10 @@ public class SampleController {
         return"ASDF";
     }
 
+    @RequestMapping("/bob")
+    String home() {
+        return "Spongebob";
+    }
+
 
 }
