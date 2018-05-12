@@ -3,9 +3,13 @@ package com.cppc.backend.sample.controller;
 import com.cppc.backend.sample.domain.Sample;
 import com.cppc.backend.sample.service.SampleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -13,6 +17,7 @@ import java.util.List;
  */
 
 @RestController
+@EnableAutoConfiguration
 public class SampleController {
 
     @Autowired
@@ -34,6 +39,5 @@ public class SampleController {
     String home() {
         return "Spongebob";
     }
-
 
 }
