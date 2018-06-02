@@ -1,9 +1,7 @@
 package com.cppc.backend.sample.controller;
 
-
-import com.cppc.backend.counter.Visit;
-import com.cppc.backend.counter.VisitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,22 +12,24 @@ import java.util.List;
 
 @Controller
 public class WelcomeController {
+    private final static String REDIS_KEY = "ms";
 
     @Autowired
-    VisitRepository visitRepository;
+    private RedisTemplate redisTemplate;
 
     @Resource(name = "redisTemplate")
-    private ValueOperations<String, String> valusOps;
+    private ValueOperations<String, Object> valueOperations;
 
     @RequestMapping("/")
     public String welcome(){
 
+        redisTemplate.opsForValue().set(REDIS_KEY,1);
 
-        System.out.println(getVisitCount());
+        /*System.out.println(getVisitCount());*/
         return "index.html";
     }
 
-    public Long getVisitCount() {
+  /*  public Long getVisitCount() {
         Visit visit = new Visit();
         visit.setCount(1);
         visit.setStartAt(new Date());
@@ -43,6 +43,6 @@ public class WelcomeController {
 
 
         return 1L;
-    }
+    }*/
 
 }
